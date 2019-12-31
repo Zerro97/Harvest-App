@@ -28,7 +28,7 @@ export default class SignUpRoute extends Component {
 
     console.log(user);
 
-    axios.post('http://localhost:5000/users/add', user)
+    axios.post('http://localhost:5000/users', user)
       .then(res => console.log(res.data));
 
     this.setState({
@@ -43,16 +43,7 @@ export default class SignUpRoute extends Component {
         <form onSubmit={this.onSubmit}>
           <div className="form-group"> 
             <label>Username: </label>
-            <input  type="text"
-                required
-                className="form-control"
-                value={this.state.username}
-                onChange={this.onChangeUsername}
-                />
-          </div>
-          <div className="form-group"> 
-            <label>Password: </label>
-            <input  type="text"
+            <input type="text"
                 required
                 className="form-control"
                 value={this.state.username}

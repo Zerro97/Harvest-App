@@ -21,11 +21,6 @@ function App() {
       <Navbar />
 
       <div className="container mt-4">  
-        <Route path="/" exact component={ExercisesList} />
-        <Route path="/edit/:id" component={EditExercise} />
-        <Route path="/create" component={CreateExercise} />
-        <Route path="/user" component={CreateUser} />
-
         <Route path="/audios" component={Audios} />
         <Route path="/sermons" component={Sermons} />
         <Route path="/announcement" component={Announcement} />
@@ -40,3 +35,10 @@ function App() {
 }
 
 export default App;
+
+/*
+        <Route path="/" exact component={ExercisesList} />
+        <Route path="/edit/:id" component={EditExercise} />
+        <Route path="/create" component={CreateExercise} />
+        <Route path="/user" component={CreateUser} />
+*/

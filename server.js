@@ -29,22 +29,22 @@ connection.once('open', () => {
 
 //* Server Side Routes *//
 const exercisesRouter = require('./routes/exercises');
-const usersRouter = require('./routes/users');
 
 const reimbursementRouter = require('./routes/reimbursement');
 const announcementRouter = require('./routes/announcement');
 const sermonsRouter = require('./routes/sermons');
 const audiosRouter = require('./routes/audios');
 const loginRouter = require('./routes/login');
+const usersRouter = require('./routes/users');
 
 app.use('/exercises', exercisesRouter);
-app.use('/users', usersRouter);
 
-app.use('/login', loginRouter);
-app.use('/audios', audiosRouter);
-app.use('/sermons', sermonsRouter);
-app.use('/announcement', announcementRouter);
 app.use('/reimbursement', reimbursementRouter);
+app.use('/announcement', announcementRouter);
+app.use('/sermons', sermonsRouter);
+app.use('/audios', audiosRouter);
+app.use('/login', loginRouter);
+app.use('/users', usersRouter);
 
 
 //* Deploy *//
