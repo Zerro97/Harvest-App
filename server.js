@@ -1,0 +1,65 @@
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
+
+// Allows usage of environment varaibles (eg. process.env.PORT)
+require('dotenv').config();
+
+
+//* Express Set Up *//
+const app = express();
+// Allows other domains to make request to our webAPI
+app.use(cors());
+// Enable express to parse json
+app.use(express.json());
+
+// port defines where the application is being run
+const port = process.env.PORT || 5000;
+
+
+//* MongoDB Database Set Up *//
+const uri = process.env.ATLAS_URI;
+mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true }
+);
+const connection = mongoose.connection;
+connection.once('open', () => {
+  console.log("MongoDB database connection established successfully");
+})
+
+
+//* Server Side Routes *//
+const exercisesRouter = require('./routes/exercises');
+const usersRouter = require('./routes/users');
+
+const reimbursementRouter = require('./routes/reimbursement');
+const announcementRouter = require('./routes/announcement');
+const sermonsRouter = require('./routes/sermons');
+const audiosRouter = require('./routes/audios');
+const loginRouter = require('./routes/login');
+
+app.use('/exercises', exercisesRouter);
+app.use('/users', usersRouter);
+
+app.use('/login', loginRouter);
+app.use('/audios', audiosRouter);
+app.use('/sermons', sermonsRouter);
+app.use('/announcement', announcementRouter);
+app.use('/reimbursement', reimbursementRouter);
+
+
+//* Deploy *//
+// Serve static assets if in production
+if (process.env.NODE_ENV === 'production') {
+  // Set static folder
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
+
+
+// Run the application on port variable
+app.listen(port, () => {
+    console.log(`Server is running on port: ${port}`);
+});
