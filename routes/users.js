@@ -1,5 +1,16 @@
+/**
+ * JWT Web Token Explanation
+ * token = jwt.sign(payload, privateKey, signOptions)
+ * 
+ * payload: data that is encrypted
+ * privateKey: used in RSA encryption
+ * signOptions: specify configuration such as expire time, issuer of token etc..
+ */
+
 const router = require('express').Router();
 let User = require('../models/user.model');
+var jwt = require('jsonwebtoken');
+var config = require('../config');
 
 /**
  * GET
@@ -16,18 +27,29 @@ router.route('/').get((req, res) => {
 
 /**
  * POST
- * Create a new user. Doesn't require token as anyone should be able to make account
+ * Create a new user. Passes username and password. 
+ * Hash the password immediately and store it in database. 
+ * Create token using the user id
+ * Return token
  * 
  * Req: Username & password
- * Res: Message indicating if it succeeded or not
+ * Res: Return token
  */
 router.route('/').post((req, res) => {
+  const hashedPassword = bcrypt.hashSync(req.body.password, 8);
   const username = req.body.username;
-  const newUser = new User({username});
-  
+
+  const newUser = new User({username, hashedPassword});
+  console.log(newUser);
 
   newUser.save()
-    .then(() => res.json('User added!'))
+    .then(function(){
+      var token = jwt.sign({ id: newUser._id }, config.private_key, {
+        expiresIn: 86400 // expires in 24 hours
+      });
+
+      res.status(200).send({ auth: true, token: token });
+    })
     .catch(err => res.status(400).json('Error: ' + err));
 });
 

@@ -7,10 +7,12 @@ export default class SignUpRoute extends Component {
     super(props);
 
     this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onChangePassword = this.onChangePassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      username: ''
+      username: '',
+      password: '',
     }
   }
 
@@ -20,22 +22,28 @@ export default class SignUpRoute extends Component {
     })
   }
 
-  onSubmit(e) {
-    console.log(port);
+  onChangePassword(e) {
+    this.setState({
+      password: e.target.value
+    })
+  }
 
+  onSubmit(e) {
     e.preventDefault();
 
     const user = {
-      username: this.state.username
+      username: this.state.username,
+      password: this.state.password,
     }
-
-    console.log(port);
+    
+    console.log(user);
 
     axios.post(port + '/users', user)
       .then(res => console.log(res.data));
 
     this.setState({
-      username: ''
+      username: '',
+      password: '',
     })
   }
 
@@ -51,6 +59,13 @@ export default class SignUpRoute extends Component {
                 className="form-control"
                 value={this.state.username}
                 onChange={this.onChangeUsername}
+                />
+            <label>Password: </label>
+            <input type="text"
+                required
+                className="form-control"
+                value={this.state.password}
+                onChange={this.onChangePassword}
                 />
           </div>
           <div className="form-group">
