@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {port} from '../config';
 
 export default class SignUpRoute extends Component {
   constructor(props) {
@@ -20,15 +21,17 @@ export default class SignUpRoute extends Component {
   }
 
   onSubmit(e) {
+    console.log(port);
+
     e.preventDefault();
 
     const user = {
       username: this.state.username
     }
 
-    console.log(user);
+    console.log(port);
 
-    axios.post('http://localhost:5000/users', user)
+    axios.post(port + '/users', user)
       .then(res => console.log(res.data));
 
     this.setState({

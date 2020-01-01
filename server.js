@@ -1,6 +1,7 @@
+const mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
+const {atlas_uri, node_env, port} = require('./config')
 
 // Allows usage of environment varaibles (eg. process.env.PORT)
 require('dotenv').config();
@@ -13,12 +14,9 @@ app.use(cors());
 // Enable express to parse json
 app.use(express.json());
 
-// port defines where the application is being run
-const port = process.env.PORT || 5000;
-
 
 //* MongoDB Database Set Up *//
-const uri = process.env.ATLAS_URI;
+const uri = atlas_uri;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true }
 );
 const connection = mongoose.connection;
@@ -49,7 +47,7 @@ app.use('/users', usersRouter);
 
 //* Deploy *//
 // Serve static assets if in production
-if (process.env.NODE_ENV === 'production') {
+if (node_env === 'production') {
   // Set static folder
   app.use(express.static('client/build'));
 
