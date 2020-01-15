@@ -8,6 +8,9 @@
     "server": "nodemon server.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false cd client && npm install && npm run build"
   },
+  "engines": {
+    "node": "10.15.1"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
