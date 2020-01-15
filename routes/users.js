@@ -9,8 +9,9 @@
 
 const router = require('express').Router();
 let User = require('../models/user.model');
-var jwt = require('jsonwebtoken');
-var config = require('../config');
+let bcrypt = require('bcryptjs');
+let jwt = require('jsonwebtoken');
+let config = require('../config');
 
 /**
  * GET
@@ -39,8 +40,8 @@ router.route('/').post((req, res) => {
   const hashedPassword = bcrypt.hashSync(req.body.password, 8);
   const username = req.body.username;
 
-  const newUser = new User({username, hashedPassword});
-  console.log(newUser);
+  const newUser = new User({username: username, password: hashedPassword});
+  console.log(config.private_key);
 
   newUser.save()
     .then(function(){

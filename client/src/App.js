@@ -8,12 +8,13 @@ import EditExercise from "./components/edit-exercise.component";
 import CreateExercise from "./components/create-exercise.component";
 import CreateUser from "./components/create-user.component";
 
-import Sermons from "./routes/sermons.jsx";
-import Audios from "./routes/audios.jsx";
-import Announcement from "./routes/announcement.jsx";
 import Reimbursement from "./routes/reimbursement.jsx";
-import LogIn from "./routes/login.jsx";
+import Announcement from "./routes/announcement.jsx";
+import Sermons from "./routes/sermons.jsx";
 import SignUp from "./routes/signup.jsx";
+import Audios from "./routes/audios.jsx";
+import LogIn from "./routes/login.jsx";
+import Home from "./routes/home.jsx";
 
 function App() {
   return (
@@ -21,13 +22,15 @@ function App() {
       <Navbar />
 
       <div className="container mt-4">  
+        <Route path="/" component={Home} />
+        <Route path="/login" component={LogIn} />
+        <Route path="/signup" component={SignUp} />
         <Route path="/audios" component={Audios} />
         <Route path="/sermons" component={Sermons} />
         <Route path="/announcement" component={Announcement} />
         <Route path="/reimbursement" component={Reimbursement} />
 
-        <Route path="/login" component={LogIn} />
-        <Route path="/signup" component={SignUp} />
+
       </div>
 
     </Router>

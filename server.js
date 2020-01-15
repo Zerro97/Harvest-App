@@ -17,7 +17,7 @@ app.use(express.json());
 
 //* MongoDB Database Set Up *//
 const uri = atlas_uri;
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true }
+mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
 );
 const connection = mongoose.connection;
 connection.once('open', () => {
