@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {port} from '../config';
 
 export default class LogInRoute extends Component {
   constructor(props) {
     super(props);
 
     this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onChangePassword = this.onChangePassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      username: ''
+      username: '',
+      password: '',
     }
   }
 
@@ -19,20 +22,28 @@ export default class LogInRoute extends Component {
     })
   }
 
+  onChangePassword(e) {
+    this.setState({
+      password: e.target.value
+    })
+  }
+
   onSubmit(e) {
     e.preventDefault();
 
     const user = {
-      username: this.state.username
+      username: this.state.username,
+      password: this.state.password,
     }
 
     console.log(user);
 
-    axios.post('http://localhost:5000/users/add', user)
+    axios.post(port + '/login', user)
       .then(res => console.log(res.data));
 
     this.setState({
-      username: ''
+      username: '',
+      password: '',
     })
   }
 
@@ -52,11 +63,11 @@ export default class LogInRoute extends Component {
           </div>
           <div className="form-group"> 
             <label>Password: </label>
-            <input  type="text"
+            <input type="text"
                 required
                 className="form-control"
-                value={this.state.username}
-                onChange={this.onChangeUsername}
+                value={this.state.password}
+                onChange={this.onChangePassword}
                 />
           </div>
           <div className="form-group">

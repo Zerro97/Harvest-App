@@ -17,8 +17,11 @@ app.use(express.json());
 
 //* MongoDB Database Set Up *//
 const uri = atlas_uri;
-mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
-);
+mongoose.connect(uri, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useCreateIndex: true
+});
 const connection = mongoose.connection;
 connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
@@ -26,16 +29,12 @@ connection.once('open', () => {
 
 
 //* Server Side Routes *//
-const exercisesRouter = require('./routes/exercises');
-
 const reimbursementRouter = require('./routes/reimbursement');
 const announcementRouter = require('./routes/announcement');
 const sermonsRouter = require('./routes/sermons');
 const audiosRouter = require('./routes/audios');
 const loginRouter = require('./routes/login');
 const usersRouter = require('./routes/users');
-
-app.use('/exercises', exercisesRouter);
 
 app.use('/reimbursement', reimbursementRouter);
 app.use('/announcement', announcementRouter);

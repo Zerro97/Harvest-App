@@ -8,11 +8,17 @@ export default class SignUpRoute extends Component {
 
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
+    this.onChangeLastname = this.onChangeLastname.bind(this);
+    this.onChangeFirstname = this.onChangeFirstname.bind(this);
+    this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       username: '',
       password: '',
+      firstname: '',
+      lastname: '',
+      email: '',
     }
   }
 
@@ -28,15 +34,34 @@ export default class SignUpRoute extends Component {
     })
   }
 
+  onChangeFirstname(e) {
+    this.setState({
+      firstname: e.target.value
+    })
+  }
+
+  onChangeLastname(e) {
+    this.setState({
+      lastname: e.target.value
+    })
+  }
+
+  onChangeEmail(e) {
+    this.setState({
+      email: e.target.value
+    })
+  }
+
   onSubmit(e) {
     e.preventDefault();
 
     const user = {
       username: this.state.username,
       password: this.state.password,
+      firstname: this.state.firstname,
+      lastname: this.state.lastname,
+      email: this.state.email,
     }
-    
-    console.log(user);
 
     axios.post(port + '/users', user)
       .then(res => console.log(res.data));
@@ -44,6 +69,9 @@ export default class SignUpRoute extends Component {
     this.setState({
       username: '',
       password: '',
+      firstname: '',
+      lastname: '',
+      email: '',
     })
   }
 
@@ -66,6 +94,27 @@ export default class SignUpRoute extends Component {
                 className="form-control"
                 value={this.state.password}
                 onChange={this.onChangePassword}
+                />
+            <label>First Name: </label>
+            <input type="text"
+                required
+                className="form-control"
+                value={this.state.firstname}
+                onChange={this.onChangeFirstname}
+                />
+            <label>Last Name: </label>
+            <input type="text"
+                required
+                className="form-control"
+                value={this.state.lastname}
+                onChange={this.onChangeLastname}
+                />
+            <label>Email: </label>
+            <input type="text"
+                required
+                className="form-control"
+                value={this.state.email}
+                onChange={this.onChangeEmail}
                 />
           </div>
           <div className="form-group">

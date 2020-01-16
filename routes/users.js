@@ -12,6 +12,7 @@ let User = require('../models/user.model');
 let bcrypt = require('bcryptjs');
 let jwt = require('jsonwebtoken');
 let config = require('../config');
+let midObj = require('../middleware');
 
 /**
  * GET
@@ -39,9 +40,17 @@ router.route('/').get((req, res) => {
 router.route('/').post((req, res) => {
   const hashedPassword = bcrypt.hashSync(req.body.password, 8);
   const username = req.body.username;
+  const firstname = req.body.firstname;
+  const lastname = req.body.lastname;
+  const email = req.body.email;
 
-  const newUser = new User({username: username, password: hashedPassword});
-  console.log(config.private_key);
+  const newUser = new User({
+    username: username, 
+    password: hashedPassword,
+    firstname: firstname, 
+    lastname: lastname, 
+    email: email, 
+  });
 
   newUser.save()
     .then(function(){

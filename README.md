@@ -120,7 +120,7 @@ Server side routes are used for restful API calls and accessing database.<br>
 ### Server side (localhost:5000)
 | Route                                   | Auth Required | Admin | Token Required | Get | Post | Put | Delete |
 |-----------------------------------------|---------------|-------|----------------|-----|------|-----|--------|
-| /login                                  | ✔︎             |       |                | ✔︎   |      |     |        |
+| /login                                  | ✔︎             |       |                |     | ✔︎    |     |        |
 | /users/                                 |               |       |                |     | ✔︎    |     |        |
 | /users/`<username>`                     |               |       | ✔︎              | ✔︎   | ✔︎    | ✔︎   | ✔︎      |
 | /sermons/                               |               |       | ✔︎              | ✔︎   | ✔︎    |     |        |
@@ -202,7 +202,7 @@ I plan to deploy the web application through heroku (heroku provides cloud based
 [.env file](https://medium.com/the-node-js-collection/making-your-node-js-work-everywhere-with-environment-variables-2da8cdf6e786)<br>
 [Mongoose](https://mongoosejs.com/docs/schematypes.html)<br>
 [Image Uploading](https://codeburst.io/image-uploading-using-react-and-node-to-get-the-images-up-c46ec11a7129)<br>
-[Image Uploading Using aws s3](https://www.youtube.com/watch?v=Oc69SEtbM_U)
+[Image Uploading Using aws s3](https://www.youtube.com/watch?v=Oc69SEtbM_U)<br>
 [Authentication](https://www.freecodecamp.org/news/securing-node-js-restful-apis-with-json-web-tokens-9f811a92bb52/)<br>
 [MongoDB Basic](https://www.youtube.com/watch?v=9OPP_1eAENg&list=PL4cUxeGkcC9jpvoYriLI0bY8DOgWZfi6u&index=1)<br>
 [README.md file](https://github.com/tchapi/markdown-cheatsheet/blob/master/README.md)<br>
