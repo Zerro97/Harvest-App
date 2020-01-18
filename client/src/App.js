@@ -23,7 +23,7 @@ function App() {
       <Navbar />
 
       <div className="container mt-4">  
-        <Route path="/" component={Home} />
+        <Route path="/home" component={Home} />
         <Route path="/login" component={LogIn} />
         <Route path="/signup" component={SignUp} />
         <Route path="/audios" component={Audios} />

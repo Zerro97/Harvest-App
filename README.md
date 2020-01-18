@@ -31,33 +31,59 @@ Below is the list of functionalities we could add:<br>
     * Videos/audios are displayed on the website <br>
 
 
+#### Current To Do
+* React CSS Modularization
+* Styling file uploader button
+* Working with Amazon S3 to upload files
+* Retrieving files from S3 and displaying on website
+* Redirection to home page after login/signup
+* Reimbursement user access control
+
+
 ## Files/Folders Explanation
-With MERN stack web application, there are front-end and back-end side to development.<br><br>
-**"src"** folder contains all the react related files which deals with front-end.<br>
-**"server"** folder contains all the express, mongoDB related files which deals with back-end.<br>
+With MERN stack web application, there are front-end and back-end side to development. <br>
+**Update:** Originally I divided the folders into "src" and "server" where src folder contained all the front-end files and server folder contained all the back-end folder. However due to how heroku works, I decided to put all the front-end files within the back-end folder. I'll explain more in detail below:<br><br>
 
 
-#### Root
+#### Root (backend files + client folder)
 <img src="https://github.com/Zerro97/Harvest-App/blob/master/screenshots/folder_root.png" alt="Start Screen" height="300px" width="220px"/>
 
-* **src:** All the front-end related files
-* **server:** All the back-end related files<br>
+* **client:** Folder containing all the front-end related files
+* **middlesware:** Folder containing all the express middleware functions. Example include checkToken function, which checks if the request contains token (check if the user is logged in) [Explanation on middleware](https://medium.com/@agoiabeladeyemi/a-simple-explanation-of-express-middleware-c68ea839f498).
+* **models:** Folder that contains all the mongoose schemas/models. One file corresponds to one schema/model. For example, user.model.js is a file that defines the user information such as username and passwords.
+* **node_modules:** All the dependencies/libraries used for development
+* **routes:** Folder that contains all the js files that handles API calls. One file corresponds to one server-side route. For example, users.js is a file that defines what happens if the client side do API calls to '/user' route.
+* **screenshots:** Folder used to display images in github README
+* **.env:** This is file that defines environment variables. This is useful for security as I can include it in gitignore file and not reveal the passwords used for accessing mongoDB atlas. This also enables production level configurations such as connecting to mongoDB database when deployed in heroku.
+* **gitignore:** Decides which files should not be pushed to remote github repository
+* **config.js:** Works with .env file where it modularizes different environment variables
+* **Procfile:** Used in heroku deployment where it tells heroku which command to run in the beginning
+* **package.json:**
+* **README.md:**
+* **server.js:** This is main js file that handles different configurations. It connects the file to cloud mongoDB database, calls different server-side routes and runs the application.
+
+#### Notes
+Client folder contains react related files. Client-side and server-side is separated and does not have much interaction apart from the API calls to server. Some scripts regarding heroku deployment is written in the package.json file.<br>
+
+
+#### Client
+<img src="https://github.com/Zerro97/Harvest-App/blob/master/screenshots/folder_client.png" alt="Start Screen" height="300px" width="220px"/>
+
 * **node_modules:** All the dependencies/libraries used for development
 * **public**
     * **favicon.ico:** The website icon shown on tab
     * **index.html:** The root html file at top of DOM. Used in react
     * **manifest.json:** Json file that describes the application
-* **README.md:**
-* **gitignore:** Decides which files should not be pushed to remote github repository
+* **src:** All the react related files
 
 #### Notes
-The most important folders that we have to deal with are "src" and "server". We don't really have to deal with node_modules and public folders. If anyone wishes to edit the github description, feel free to edit README.md file. Currently gitignore file includes .env file for security reasons and node_modules folder as we do not have to upload all the dependencies to remote repo.<br>
+You need to run "npm install" in this folder to download all the dependencies used in front-end development<br>
 
-
-#### Front-End
+#### Src
 <img src="https://github.com/Zerro97/Harvest-App/blob/master/screenshots/folder_src.png" alt="Start Screen" height="300px" width="220px"/>
 
 * **components:** Folder that contains react components that make up part of a webpage. Think of it as classes or building blocks of website. Example could include the navigation bar.
+* **images:** Images used in the website
 * **routes:** Folder that contains react components that make up one webpage. The files in routes folder are being called in App.js file.
 * **App.js/App.css:** App.js file defines the client side routes. For example, if the user types "/sermons", app.js file determines which file to display on screen through react router. App.css file is simply a css file for App.js file. Currently, App.css file is not used
 * **index.js/index.css:** index.js file uses App.js and connects it to index.html. Basically it is what pushes all the react components to the html file.
@@ -65,20 +91,7 @@ The most important folders that we have to deal with are "src" and "server". We 
 * **serviceWorker.js:**
 
 #### Notes
-'src' folder handles the client side logics. However, it still interacts with server side through a library called axios (Axios does the same job as *fetch* function in javascript but with added functionality. More on this at the bottom of README). API calls (GET, POST, PUT, DELETE) to server-side are made through axios. For example, during log in, the user could fill in his username and password and when the submit button is pressed, the user is making GET request to server side 'login' route. The server side then responds by sending token for the login authentication.<br>
-
-
-#### Back-end
-<img src="https://github.com/Zerro97/Harvest-App/blob/master/screenshots/folder_backend.png" alt="Start Screen" height="300px" width="220px"/>
-
-* **models:** Folder that contains all the mongoose schemas/models. One file corresponds to one schema/model. For example, user.model.js is a file that defines the user information such as username and passwords.
-* **middlesware:**
-* **routes:** Folder that contains all the js files that handles API calls. One file corresponds to one server-side route. For example, users.js is a file that defines what happens if the client side do API calls to '/user' route.
-* **.env:** This is file that defines environment variables. This is useful for security as I can include it in gitignore file and not reveal the passwords used for accessing mongoDB atlas. This is used in server.js file.
-* **server.js:** This is main js file that handles different configurations. It connects the file to cloud mongoDB database, calls different server-side routes and runs the application.
-
-#### Notes
-'server' folder has it's own node_modules folder and thus require to install dependencies separately from the root directory.<br>
+Adding a webpage would involve modifying app.js file to define the client-side route and then making a file in the routes folder.<br>
 
 
 ## API Routes
