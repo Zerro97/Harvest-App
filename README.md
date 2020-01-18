@@ -67,7 +67,7 @@ Client folder contains react related files. Client-side and server-side is separ
 
 
 #### Client
-<img src="https://github.com/Zerro97/Harvest-App/blob/master/screenshots/folder_client.png" alt="Start Screen" height="300px" width="220px"/>
+<img src="https://github.com/Zerro97/Harvest-App/blob/master/screenshots/folder_client.png" alt="Start Screen" height="200px" width="150px"/>
 
 * **node_modules:** All the dependencies/libraries used for development
 * **public**
@@ -80,7 +80,7 @@ Client folder contains react related files. Client-side and server-side is separ
 You need to run "npm install" in this folder to download all the dependencies used in front-end development<br>
 
 #### Src
-<img src="https://github.com/Zerro97/Harvest-App/blob/master/screenshots/folder_src.png" alt="Start Screen" height="300px" width="220px"/>
+<img src="https://github.com/Zerro97/Harvest-App/blob/master/screenshots/folder_src.png" alt="Start Screen" height="300px" width="170px"/>
 
 * **components:** Folder that contains react components that make up part of a webpage. Think of it as classes or building blocks of website. Example could include the navigation bar.
 * **images:** Images used in the website
@@ -200,13 +200,13 @@ In the root directory (/), run above command. This will install all the dependen
 It's time to run the web application!
 
 #### `nodemon server`
-First, in the server directory, run above command. This will run server.js file and connnect the front end to our server. It will be at "localhost:5000" (for local development)
+First, in the root directory, run above command. This will run server.js file and connnect the front end to our server. It will be at "localhost:5000" (for local development)
 
 #### `npm start`
-Next, in the parent directory, run above command. This will start up the server and display the website in the browser. It will be at "localhost:3000" (for local development)
+Next, in the client directory, run above command. This will start up the server and display the website in the browser. It will be at "localhost:3000" (for local development)
 
 ## Deployment
-I plan to deploy the web application through heroku (heroku provides cloud based server). Heroku will be directly connected to the master branch in github repo and thus whatever changes made in the master branch will automatically be reflected on the website. For development purposes, use develop branch instead. Only merge the changes to master branch if there are no bugs.
+Heroku is directly connected to the master branch in github repo and thus whatever changes made in the master branch will automatically be reflected on the website. For development purposes, use develop branch instead. Only merge the changes to master branch if there are no bugs.
 
 ## References
 [Access Control](https://blog.nodeswat.com/implement-access-control-in-node-js-8567e7b484d1)<br>
