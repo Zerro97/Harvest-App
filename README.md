@@ -67,7 +67,7 @@ Client folder contains react related files. Client-side and server-side is separ
 
 
 #### Client
-<img src="https://github.com/Zerro97/Harvest-App/blob/master/screenshots/folder_client.png" alt="Start Screen" height="150px" width="90px"/>
+<img src="https://github.com/Zerro97/Harvest-App/blob/master/screenshots/folder_client.png" alt="Start Screen" height="140px" width="160px"/>
 
 * **node_modules:** All the dependencies/libraries used for development
 * **public**
