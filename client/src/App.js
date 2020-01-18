@@ -12,6 +12,11 @@ import Audios from "./routes/audios.jsx";
 import LogIn from "./routes/login.jsx";
 import Home from "./routes/home.jsx";
 
+import ReimbursementCreate from "./routes/reimbursement_create.jsx";
+import AnnouncementCreate from "./routes/announcement_create.jsx";
+import SermonsCreate from "./routes/sermons_create.jsx";
+import AudiosCreate from "./routes/audios_create";
+
 function App() {
   return (
     <Router>
@@ -26,7 +31,10 @@ function App() {
         <Route path="/announcement" component={Announcement} />
         <Route path="/reimbursement" component={Reimbursement} />
 
-
+        <Route path="/audios_create" component={AudiosCreate} />
+        <Route path="/sermons_create" component={SermonsCreate} />
+        <Route path="/announcement_create" component={AnnouncementCreate} />
+        <Route path="/reimbursement_create" component={ReimbursementCreate} />
       </div>
 
     </Router>

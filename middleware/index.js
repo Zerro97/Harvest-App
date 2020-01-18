@@ -5,6 +5,7 @@
 // All the functions are defined in the middlewareObj
 var middlewareObj = {};
 
+// Function that checks if the request has token in it
 middlewareObj.checkToken = function(req, res, next){
     // Every request that requires login should include x-access-token in request header and provide token as its value
     let token = req.headers['x-access-token'];
@@ -33,11 +34,3 @@ middlewareObj.checkToken = function(req, res, next){
 }
 
 module.exports = middlewareObj;
-
-/*
-if(req.isAuthenticated()){
-    return next();
-}
-req.flash("error", "You need to be logged in to do that");
-res.redirect("/login");
-*/

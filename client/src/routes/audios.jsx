@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class AudiosRoute extends Component {
   render() {
@@ -9,6 +10,7 @@ export default class AudiosRoute extends Component {
             <h4>Title</h4>
             <div>Video</div>
             <p>Description</p>
+            <Link to="/audios_create" className="btn btn-primary">Create</Link>
         </div>
       </div>
     )

@@ -12,7 +12,7 @@ export default class HomeRoute extends Component {
   render() {
     return (
       <div>
-        
+        <img src={require("../images/latestSermons.png")} className="img-fluid" alt="Responsive image"></img>
       </div>
     )
   }
