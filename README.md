@@ -2,6 +2,18 @@
 The primary goal of this project is to practice building web application using MERN stack. However, if it turns out well we could use it for the church.<br>
 
 
+## Table of Contents
+[Description](##description)
+[Files/Folders Description](##files/folders-description)
+[API Routes](##api-routes)
+[Authentication](##authentication)
+[Amazon S3](##amazon-s3)
+[Set Up](##set-up)
+[Running](##running)
+[Deployment](##deployment)
+[References](##references)
+
+
 ## Description
 This is a web application which helps users to view announcement/sermons and aids church leaders in organizing their documents and displaying them.<br>
 
@@ -42,7 +54,7 @@ Below is the list of functionalities we could add:<br>
 
 ## Files/Folders Explanation
 With MERN stack web application, there are front-end and back-end side to development. <br>
-**Update:** Originally I divided the folders into "src" and "server" where src folder contained all the front-end files and server folder contained all the back-end folder. However due to how heroku works, I decided to put all the front-end files within the back-end folder. I'll explain more in detail below:<br><br>
+**Update:** Originally I divided the folders into "src" and "server" where src folder contained all the front-end files and server folder contained all the back-end files. However due to how heroku works, I decided to put all the front-end files within the back-end folder. I'll explain more in detail below:<br><br>
 
 
 #### Root (backend files + client folder)
@@ -146,7 +158,9 @@ Server side routes are used for restful API calls and accessing database.<br>
 | /reimbursement/`<reimbursement_id>`     |               | ✔︎     | ✔︎              | ✔︎   |      | ✔︎   | ✔︎      |
 
 #### Notes
-In server side route, I'll probably differentiate between reimbursement reviewer and requester. While reviwer can look at the reimbursement requests and accept/reject the requests, requester can only make requests and do not have access to other people's reimbursement requests. I think this could be done by adding admin field in the user schema and use that to determine the user roles.<br>
+In server side route, I'll probably differentiate between reimbursement reviewer and requester. While reviwer can look at the reimbursement requests and accept/reject the requests, requester can only make requests and do not have access to other people's reimbursement requests. I think this could be done by adding admin field in the user schema and use that to determine the user roles.<br><br>
+
+Accessing resources from different [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) involve [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). 
 
 ## Authentication
 There are different types of authentication we can use for log in
@@ -162,6 +176,12 @@ There are different types of authentication we can use for log in
 [More Explanation](https://blog.risingstack.com/web-authentication-methods-explained/)
 
 I haven't decided on which authentication method to use but I will most probably use token based authentication (specifically JWT Based authentication).<br>
+
+
+## Amazon S3
+Amazon S3 is storage service offered to developers. I'm still learning how to use it and will include details here later. <br>
+[S3 Documentation](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/js-sdk-dv.pdf#s3-node-examples)<br>
+[Video Tutorial](https://www.youtube.com/watch?v=Oc69SEtbM_U)
 
 
 ## Setup
