@@ -3,15 +3,15 @@ The primary goal of this project is to practice building web application using M
 
 
 ## Table of Contents
-[Description](##description)
-[Files/Folders Description](##files/folders-description)
-[API Routes](##api-routes)
-[Authentication](##authentication)
-[Amazon S3](##amazon-s3)
-[Set Up](##set-up)
-[Running](##running)
-[Deployment](##deployment)
-[References](##references)
+[Description](#description)<br>
+[Files/Folders Description](#files/folders-description)<br>
+[API Routes](#api-routes)<br>
+[Authentication](#authentication)<br>
+[Amazon S3](#amazon-s3)<br>
+[Set Up](#set-up)<br>
+[Running](#running)<br>
+[Deployment](#deployment)<br>
+[References](#references)<br>
 
 
 ## Description
