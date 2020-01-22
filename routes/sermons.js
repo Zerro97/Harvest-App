@@ -23,13 +23,15 @@ router.route('/').post((req, res) => {
 });
 
 
-//***** INDIVIDUALS *****//
+//**** Individual Ids ****//
+// Individual ids can be found in req.params.id
+
 /**
  * GET
  * Returns a specific video & description.
  * 
  * Req: Token
- * Res: Video & description
+ * Res: Sermon mongoose model
  */
 router.route('/:id').get((req, res) => {
 
@@ -39,7 +41,7 @@ router.route('/:id').get((req, res) => {
  * PUT
  * Update a specific video & description.
  * 
- * Req: Token
+ * Req: Token & Updated sermon information
  * Res: Message indicating if it succeeded or not
  */
 router.route('/:id').put((req, res) => {

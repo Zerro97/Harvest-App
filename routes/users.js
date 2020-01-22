@@ -18,7 +18,7 @@ let midObj = require('../middleware');
  * GET
  * This is only used for testing. Users shouldn't have access (make GET request) to other users information
  * 
- * Req: Nothing (Doesn't require token)
+ * Req: Nothing
  * Res: Array of users
  */
 router.route('/').get((req, res) => {
@@ -61,6 +61,37 @@ router.route('/').post((req, res) => {
       res.status(200).send({ auth: true, token: token });
     })
     .catch(err => res.status(400).json('Error: ' + err));
+});
+
+
+//**** Individual Ids ****//
+// Individual ids can be found in req.params.id
+
+/**
+ * GET (Individual)
+ * Req: Token
+ * Res: User mongoose model
+ */
+router.route('/:id').get((req, res) => {
+
+});
+
+/**
+ * PUT (Individual)
+ * Req: Token & Updated user information
+ * Res: Message indicating if it succeeded or not
+ */
+router.route('/:id').put((req, res) => {
+  
+});
+
+/**
+ * DELETE (Individual)
+ * Req: Token
+ * Res: Message indicating if it succeeded or not
+ */
+router.route('/:id').delete((req, res) => {
+  
 });
 
 module.exports = router;

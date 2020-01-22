@@ -23,13 +23,15 @@ router.route('/').post((req, res) => {
 });
 
 
-//***** INDIVIDUALS *****//
+//**** Individual Ids ****//
+// Individual ids can be found in req.params.id
+
 /**
  * GET
  * Returns a specific audio & description.
  * 
  * Req: Token
- * Res: Video & description
+ * Res: Audio mongoose model
  */
 router.route('/:id').get((req, res) => {
 
@@ -39,7 +41,7 @@ router.route('/:id').get((req, res) => {
  * PUT
  * Update a specific audio & description.
  * 
- * Req: Token
+ * Req: Token & Updated audio information
  * Res: Message indicating if it succeeded or not
  */
 router.route('/:id').put((req, res) => {

@@ -2,10 +2,11 @@
 The primary goal of this project is to practice building web application using MERN stack. However, if it turns out well we could use it for the church.<br>
 
 
-## Table of Contents
+## Contents
 [Description](#description)<br>
-[Files/Folders Description](#files/folders-description)<br>
+[Files/Folders Description](#filesfolders-description)<br>
 [API Routes](#api-routes)<br>
+[Express](#express)<br>
 [Authentication](#authentication)<br>
 [Amazon S3](#amazon-s3)<br>
 [Set Up](#set-up)<br>
@@ -147,7 +148,7 @@ Server side routes are used for restful API calls and accessing database.<br>
 |-----------------------------------------|---------------|-------|----------------|-----|------|-----|--------|
 | /login                                  | ✔︎             |       |                |     | ✔︎    |     |        |
 | /users/                                 |               |       |                |     | ✔︎    |     |        |
-| /users/`<username>`                     |               |       | ✔︎              | ✔︎   | ✔︎    | ✔︎   | ✔︎      |
+| /users/`<users_id>`                     |               |       | ✔︎              | ✔︎   |      | ✔︎   | ✔︎      |
 | /sermons/                               |               |       | ✔︎              | ✔︎   | ✔︎    |     |        |
 | /sermons/`<sermon_id>`                  |               |       | ✔︎              | ✔︎   |      | ✔︎   | ✔︎      |
 | /audios/                                |               |       | ✔︎              | ✔︎   | ✔︎    |     |        |
@@ -162,24 +163,50 @@ In server side route, I'll probably differentiate between reimbursement reviewer
 
 Accessing resources from different [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) involve [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). 
 
+## Express
+There are common syntax used in express framework that I thought would be helpful to make notes.
+
+### Request
+* `req.body`
+    * Contains key-value pairs of data submitted in the request body
+* `req.params`
+    * Object that contains `route parameters` (URL segments that are used to capture the values specified at their position in the URL)
+    * ex. "/user/:name"  -->  a name property is part of req.params
+* `req.route`
+    * Contains the currently-matched route
+
+### Response
+* `res.send([body])`
+    * Send back the http response to client side
+    * The body can be buffer, string, object or array
+* `res.json()`
+    * Uses json replacer & json spaces application setting
+    * Calls res.send()
+
+`res.send()` and `res.json()` does the same job except that res.json has additional options such as spaces (the number of spaces for indentation) and replacer (rules for transforming properties encountered during stringifying).<br>
+
+* `res.status([body])`
+    * Sets the HTTP status for the response
+    * 200 - 299 are successful responses
+    * 400 - 499 are client errors
+    * 500 - 599 are server errors
+
+Most commonly used status are 200, 400(Wrong Syntax) and 404(Not Found).
+
 ## Authentication
-There are different types of authentication we can use for log in
-* Basic HTTP Authentication
-    * Requires username/password for every request
-* Session Based Authentication
-    * Client receives a session ID after authentication, stores it in a cookie, and attaches it to every subsequent request
-* Token Based Authentication
-    * Client receives a random token at the first login and passes it as request header in every request
-* JWT Based Authentication
-    * Client sends encrypted user information and receives a token, which is included in every request and decrypted by the server<br>
+Currently I am using JWT Based Authentication for user login. In JWT authentication, client compares encrypted user information with the given information (in our case, we are comparing given password and encrypted password) and receives a token if they matches. Token is included in every request and decrypted by the server.<br>
 
 [More Explanation](https://blog.risingstack.com/web-authentication-methods-explained/)
 
-I haven't decided on which authentication method to use but I will most probably use token based authentication (specifically JWT Based authentication).<br>
-
 
 ## Amazon S3
-Amazon S3 is storage service offered to developers. I'm still learning how to use it and will include details here later. <br>
+Amazon S3 is part of Amazon Web Services (AWS). It is storage service offered to developers. I'll be using S3 to upload photos, audios and videos and retrieve them in the website. <br>
+
+AWS IAM defines what a principal entity is allowed to do in an account
+* Terms
+    * Policy: An object in AWS that, when associated with an identity or resource, defines their permissions
+
+
 [S3 Documentation](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/js-sdk-dv.pdf#s3-node-examples)<br>
 [Video Tutorial](https://www.youtube.com/watch?v=Oc69SEtbM_U)
 

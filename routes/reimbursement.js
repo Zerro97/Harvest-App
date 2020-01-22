@@ -1,4 +1,5 @@
 const router = require('express').Router();
+let Reimbursement = require('../models/reimbursement.model');
 
 /**
  * GET
@@ -19,27 +20,47 @@ router.route('/').get((req, res) => {
  * Res: Message indicating if it succeeded or not
  */
 router.route('/').post((req, res) => {
+    try{
+        const reimbursement = Reimbursement.findById(req.params.id);
 
+        if(!reimbursement){
+            return res.status(404).json({msg: "Reimbursement not found"});
+        }
+    } catch(err){
+        console.log("ERROR in reimbursement route: post request." + err);
+    }
 });
 
 
-//***** INDIVIDUALS *****//
+//**** Individual Ids ****//
+// Individual ids can be found in req.params.id
+
 /**
- * GET
+ * GET (Individual)
  * Returns a specific images & description.
  * 
  * Req: Token
- * Res: Video & description
+ * Res: Reimbursement mongoose model
  */
 router.route('/:id').get((req, res) => {
+    try{
+        const reimbursement = Reimbursement.findById(req.params.id);
 
+        if(!reimbursement){
+            return res.status(404).json({msg: "Reimbursement not found"});
+        }
+
+        res.json(reimbursement);
+    } catch(err){
+        console.log("ERROR in reimbursement route: post request." + err);
+    }
 });
 
 /**
- * PUT
+ * PUT (Individual)
  * Update a specific images & description.
  * 
- * Req: Token
+ * Req: Token & Updated reimbursement information
  * Res: Message indicating if it succeeded or not
  */
 router.route('/:id').put((req, res) => {
@@ -47,7 +68,7 @@ router.route('/:id').put((req, res) => {
 });
 
 /**
- * DELETE
+ * DELETE (Individual)
  * Delete an instance of reimbursement model
  * 
  * Req: Token
